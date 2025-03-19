@@ -1,0 +1,29 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ee9090",
+    "activityBar.background": "#ee9090",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#e3fbe3",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#ee9090",
+    "statusBar.background": "#e76464",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#e03838",
+    "statusBarItem.remoteBackground": "#e76464",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#e76464",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#e7646499",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#E76464",
+  "css.customData": [
+    "./.vscode/css-data.json"
+  ],
+  "cSpell.words": [
+    "fontawesome",
+    "Xmark"
+  ]
+}
