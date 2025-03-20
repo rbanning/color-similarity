@@ -1,0 +1,28 @@
+<div class="flex gap-4">
+  <div class="w-40">
+    <hallpass-color-box [red]="red()" [green]="green()" [blue]="blue()"></hallpass-color-box>
+    <div>
+      <span class="font-semibold font-mono text-lg text-slate-600">rgb({{red()}},{{green()}},{{blue()}})</span>
+    </div>
+  </div>
+  <div class="flex-1 flex flex-col gap-2">
+    <div class="flex items-center gap-4 p-2 border-2 border-slate-200">
+      <label for="red" class="font-bold text-purple-600">Red: </label>
+      <input type="range" min="0" max="255" [(ngModel)]="red" class="flex-1"/>
+      <span class="w-12 text-right font-mono text-slate-600">{{red()}}</span>
+    </div>
+    <div class="flex items-center gap-4 p-2 border-2 border-slate-200">
+      <label for="green" class="font-bold text-purple-600">Green: </label>
+      <input type="range" min="0" max="255" [(ngModel)]="green" class="flex-1"/>
+      <span class="w-12 text-right font-mono text-slate-600">{{green()}}</span>
+    </div>
+    <div class="flex items-center gap-4 p-2 border-2 border-slate-200">
+      <label for="blue" class="font-bold text-purple-600">Blue: </label>
+      <input type="range" min="0" max="255" [(ngModel)]="blue" class="flex-1"/>
+      <span class="w-12 text-right font-mono text-slate-600">{{blue()}}</span>
+    </div>
+    <div class="text-right">
+      <button (click)="saveColor()" class="border-2 border-slate-400 text-slate-900 px-4 py-1 rounded-md">Save</button>
+    </div>
+  </div>
+</div>

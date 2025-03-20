@@ -1,11 +1,15 @@
+<header class="p-4 bg-purple-50 shadow-md shadow-purple-300/50 mb-8">
+  <nav class="flex justify-center items-center gap-4 text-purple-600">
+    <a [routerLink]="['']" routerLinkActive="border-b-purple-800" class="font-bold border-b-2 border-b-transparent transition-colors hover:border-b-purple-200">Home</a>
+    <a [routerLink]="['euclidean']" routerLinkActive="text-purple-500" class="border-b-2 border-b-transparent transition-colors hover:border-b-purple-200">Euclidean</a>
+  </nav>
+</header>
+
 <main class="main">
-  <div class="container">
-    <div class="flex flex-col justify-center items-center">
-      <h1 class="font-serif font-thin text-5xl text-purple-500">Color Similarity</h1>
-      <img src="sandbox.svg" alt="sandbox logo" class="w-24 h-24" />
-      <p>Hallpass Sandbox Application</p>
-    </div>
-  </div>
+  <router-outlet />
 </main>
 
-<router-outlet />
+<footer class="p-8 mt-12 bg-slate-50 text-slate-600 flex justify-center items-center gap-4">
+  <p>A Hallpass Sandbox App</p>
+  <p>&copy; 2025 Hallpass &amp; Friends</p>
+</footer>

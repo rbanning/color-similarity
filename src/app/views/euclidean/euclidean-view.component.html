@@ -1,0 +1,43 @@
+<div class="max-w-3xl mx-auto">
+  <div class="font-bold text-xl text-center">Color Similarity</div>
+  <h1 class="flex justify-center items-center gap-2">
+    <button (click)="showDistanceFormulaSelector.set(true)" class="flex justify-center items-center gap-2">
+      <span>{{distanceFormula()}}</span>
+      <span class="font-bold -translate-y-2">&#8964;</span>
+    </button>
+  </h1>
+  <div class="my-8 mx-auto max-w-md text-center">
+    todo: separate this into two views
+    <p class="my-2">
+      1) create two colors from the color maker and calculate the distance between the two...
+    </p>  
+    <p class="my-2">
+      2) create one color and sort the color list so the most "similar" are at the top...
+    </p>  
+  </div>
+
+  <div class="flex flex-col justify-center gap-2">
+    <div class="flex justify-center items-center gap-4">
+      <div class="w-8 h-8 rounded-lg" [style.background-color]="rgb1()"></div>
+      <span class="font-bold font-amber-800">Color #1</span>
+      <div class="font-mono">{{color1()}}</div>
+    </div>
+    <div class="flex justify-center items-center gap-4">
+      <div class="w-8 h-8 rounded-lg" [style.background-color]="rgb2()"></div>
+      <span class="font-bold font-amber-800">Color #2</span>
+      <div class="font-mono">{{color2()}}</div>
+    </div>
+    <div class="flex justify-center items-center gap-4">
+      <span class="font-bold font-amber-800">Distance</span>
+      <div class="font-mono">{{simpleDistance() ?? 'n/a'}}</div>
+    </div>
+  </div>
+  <div class="my-8 flex flex-col gap-4">
+    <hallpass-color-maker (save)="updateColor(1, $event)"></hallpass-color-maker>
+  </div>
+  <h2 class="text-3xl text-purple-800">Select a Color</h2>
+  <hallpass-color-selector (colorSelected)="updateColor(2, $event?.rgb)"></hallpass-color-selector>
+</div>
+<hallpass-distance-formula-selector [show]="showDistanceFormulaSelector()" 
+  (formulaSelected)="selectDistanceFormula($event)"
+  (formulaCanceled)="selectDistanceFormula(null)"></hallpass-distance-formula-selector>

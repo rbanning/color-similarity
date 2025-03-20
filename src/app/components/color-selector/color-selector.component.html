@@ -1,0 +1,19 @@
+@if (isLoading()) {
+  <div class="flex items-center gap-2">
+    <span class="animate-spin text-2xl text-slate-100">*</span>
+    <span class="text-slate-400 text-xl">Loading...</span>
+  </div>
+}
+@else {
+  <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+    @for (color of colors(); track $index) {
+      <button (click)="selectColor(color)" 
+        class="p-2 border-2 border-slate-200 rounded-md hover:border-amber-500 max-h-24 overflow-hidden" 
+        [class.bg-black]="selected?.id === color.id">
+          <span class="inline-block overflow-hidden rounded-md w-full h-full">
+            <hallpass-color-box [red]="color.rgb[0]" [green]="color.rgb[1]" [blue]="color.rgb[2]"></hallpass-color-box>
+          </span>
+      </button>
+    }
+  </div>
+}

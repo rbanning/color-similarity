@@ -1,0 +1,1 @@
+export type ColorTuple = [red: number, green: number, blue: number];

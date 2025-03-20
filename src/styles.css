@@ -1,2 +1,5 @@
 @import "tailwindcss";
 
+h1 {
+  @apply text-5xl font-thin text-purple-600 text-center;
+}

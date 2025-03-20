@@ -18,7 +18,7 @@ module.exports = tseslint.config(
         "error",
         {
           type: "attribute",
-          prefix: "app",
+          prefix: ["app","hallpass"],
           style: "camelCase",
         },
       ],
@@ -26,11 +26,12 @@ module.exports = tseslint.config(
         "error",
         {
           type: "element",
-          prefix: "app",
+          prefix: ["app","hallpass"],
           style: "kebab-case",
         },
       ],
-    },
+      "@typescript-eslint/no-inferrable-types": "off",
+    },    
   },
   {
     files: ["**/*.html"],

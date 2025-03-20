@@ -1,0 +1,20 @@
+@if (show()) {
+  <div class="fixed inset-0 bg-slate-100/5 flex flex-col items-center justify-center">
+    <div class="bg-white p-8 border-2 border-slate-500 rounded-lg shadow-lg">
+      <h2 class="text-lg mb-4 font-bold text-purple-800">Select a Distance Formula</h2>
+      <div class="grid grid-cols-2 gap-4">
+        @for (option of options; track $index) {
+          <button (click)="selectFormula(option)" 
+            class="p-2 border-2 border-slate-200 rounded-md hover:border-purple-500">
+            <span class="inline-block">{{option}}</span>
+          </button>        
+        }
+      </div>
+      <div>
+        <button (click)="selectFormula(null)" class="mt-4 block w-full p-2 border-2 border-slate-200 rounded-md hover:border-red-500">
+          <span class="font-bold">- cancel -</span>
+        </button>
+      </div>
+    </div>
+  </div>
+}
