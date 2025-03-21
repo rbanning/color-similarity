@@ -1,0 +1,60 @@
+<div class="max-w-3xl mx-auto">
+  <div class="font-bold text-2xl text-center">Similarity Hunt</div>
+  <h1 class="flex justify-center items-center gap-2">
+    <button (click)="showDistanceFormulaSelector.set(true)" class="flex justify-center items-center gap-2">
+      <span>{{distanceFormula()}}</span>
+      <span class="font-bold -translate-y-2">&#8964;</span>
+    </button>
+  </h1>
+  <div class="my-8 mx-auto max-w-lg text-justify bg-slate-50 text-slate-800 p-2 border-2 border-slate-200 rounded-md shadow-md">
+    <p class="mb-2">
+      Use the color picker to select an rgb color and click [save] to lock in the color.  
+      The list of pre-defined colors will be sorted so those most similar to the saved color 
+      will appear at the top.
+    </p>  
+    <p class="">
+      Click on any of the pre-defined colors to see the distance between the saved color and the selected color.
+      The distance will be calculated using the selected distance formula.
+    </p>  
+  </div>
+
+  <div class="flex flex-col justify-center gap-2">
+    <div class="flex justify-center items-center gap-4">
+      <div class="w-8 h-8 rounded-lg" [style.background-color]="rgb1()"></div>
+      <span class="font-bold font-amber-800">Color #1</span>
+      <div class="font-mono">{{color1()}}</div>
+    </div>
+    @if (color2()) {
+      <div class="flex justify-center items-center gap-4">
+        <div class="w-8 h-8 rounded-lg" [style.background-color]="rgb2()"></div>
+        <span class="font-bold font-amber-800">Color #2</span>
+        <div class="font-mono">{{color2()}}</div>
+      </div>  
+      <div class="flex justify-center items-center gap-4">
+        <span class="font-bold font-amber-800">Distance</span>
+        <div class="font-mono">{{simpleDistance() ?? 'n/a'}}</div>
+        <span class="font-light text-sm">{{distanceFormula()}}</span>
+      </div>
+    }
+  </div>
+  <div class="my-8 flex flex-col gap-4">
+    <hallpass-color-maker 
+      [red]="currentColor1()[0]" 
+      [green]="currentColor1()[1]"
+      [blue]="currentColor1()[2]"
+      (save)="updateColor(1, $event)"></hallpass-color-maker>
+  </div>
+  <h2 class="text-3xl text-purple-800 flex items-center gap-4">
+    <span class="flex-1">Pre-defined Colors</span>
+    @if (color1()) {
+      <span class="text-lg text-slate-800">Sorted by similarity to {{rgb1()}}</span>
+    }
+  </h2>
+  <hallpass-color-selector 
+    [similarTo]="color1()"
+    [distanceFormula]="distanceFormula()"
+    (colorSelected)="updateColor(2, $event?.rgb)"></hallpass-color-selector>
+</div>
+<hallpass-distance-formula-selector [show]="showDistanceFormulaSelector()" 
+  (formulaSelected)="selectDistanceFormula($event)"
+  (formulaCanceled)="selectDistanceFormula(null)"></hallpass-distance-formula-selector>

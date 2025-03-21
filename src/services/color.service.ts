@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { ColorTuple, DistanceFormula } from '../types';
 import { IColor, parseRgb } from '../models';
 import { LoadingService } from './loading.service';
-import { distanceFormula } from '../lib/distance-formulas';
+import { distanceFunction } from '../lib/distance-formulas';
 
 
 @Injectable({
@@ -66,7 +66,7 @@ export class ColorService extends LoadingService {
 
   sortBySimilarity(color: ColorTuple, method: DistanceFormula) {
 
-    const fn = distanceFormula[method];
+    const fn = distanceFunction[method];
     const colors = [...this.colors()];
     colors.sort((a, b) => fn(color, a.rgb) - fn(color, b.rgb));
     this.colorsSignal.set(colors);

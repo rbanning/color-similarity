@@ -1,7 +1,24 @@
 <header class="p-4 bg-purple-50 shadow-md shadow-purple-300/50 mb-8">
-  <nav class="flex justify-center items-center gap-4 text-purple-600">
-    <a [routerLink]="['']" routerLinkActive="border-b-purple-800" class="font-bold border-b-2 border-b-transparent transition-colors hover:border-b-purple-200">Home</a>
-    <a [routerLink]="['euclidean']" routerLinkActive="text-purple-500" class="border-b-2 border-b-transparent transition-colors hover:border-b-purple-200">Euclidean</a>
+  <nav class="flex justify-center items-center gap-4 md:gap-8 lg:gap-10 text-purple-600">
+    <a [routerLink]="['']" 
+      class="font-bold border-b-2 border-b-transparent transition-colors hover:border-b-purple-200">
+      <img src="sandbox.svg" alt="sandbox logo" class="w-8 h-8" />
+    </a>
+    <a [routerLink]="['distance-calculator']" 
+      routerLinkActive="text-purple-800 border-b-purple-800" 
+      class="border-b-2 border-transparent transition-colors hover:border-b-purple-200">
+      <span>Distance Calculator</span>
+    </a>
+    <a [routerLink]="['similarity-hunt']" 
+      routerLinkActive="text-purple-800 border-b-purple-800" 
+      class="border-b-2 border-transparent transition-colors hover:border-b-purple-200">
+      <span>Similarity Hunt</span>
+    </a>
+    <a [routerLink]="['complementary-colors']" 
+      routerLinkActive="text-purple-800 border-b-purple-800" 
+      class="border-b-2 border-transparent transition-colors hover:border-b-purple-200">
+      <span>Complementary Colors</span>
+    </a>
   </nav>
 </header>
 
@@ -10,6 +27,7 @@
 </main>
 
 <footer class="p-8 mt-12 bg-slate-50 text-slate-600 flex justify-center items-center gap-4">
+  <img src="sandbox.svg" alt="sandbox logo" class="w-4 h-4 grayscale" />
   <p>A Hallpass Sandbox App</p>
   <p>&copy; 2025 Hallpass &amp; Friends</p>
 </footer>

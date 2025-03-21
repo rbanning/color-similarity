@@ -1,18 +1,19 @@
 <div class="max-w-3xl mx-auto">
-  <div class="font-bold text-xl text-center">Color Similarity</div>
+  <div class="font-bold text-2xl text-center">Distance Calculator</div>
   <h1 class="flex justify-center items-center gap-2">
     <button (click)="showDistanceFormulaSelector.set(true)" class="flex justify-center items-center gap-2">
       <span>{{distanceFormula()}}</span>
       <span class="font-bold -translate-y-2">&#8964;</span>
     </button>
   </h1>
-  <div class="my-8 mx-auto max-w-md text-center">
-    todo: separate this into two views
-    <p class="my-2">
-      1) create two colors from the color maker and calculate the distance between the two...
+  <div class="my-8 mx-auto max-w-lg text-justify bg-slate-50 text-slate-800 p-2 border-2 border-slate-200 rounded-md shadow-md">
+    <p class="mb-2">
+      Use the color pickers to select rgb colors and click [save] to lock in the color.  
+      Once you have two colors saved, the distance between the two colors will be calculated
+      using the selected distance formula.
     </p>  
-    <p class="my-2">
-      2) create one color and sort the color list so the most "similar" are at the top...
+    <p class="">
+      Try changing the distance formula to see how the distance between the two colors changes.
     </p>  
   </div>
 
@@ -29,14 +30,22 @@
     </div>
     <div class="flex justify-center items-center gap-4">
       <span class="font-bold font-amber-800">Distance</span>
-      <div class="font-mono">{{simpleDistance() ?? 'n/a'}}</div>
+      <span class="font-mono">{{simpleDistance() ?? 'n/a'}}</span>
+      <span class="font-light text-sm">{{distanceFormula()}}</span>
     </div>
   </div>
   <div class="my-8 flex flex-col gap-4">
-    <hallpass-color-maker (save)="updateColor(1, $event)"></hallpass-color-maker>
+    <hallpass-color-maker 
+      [red]="currentColor1()[0]" 
+      [green]="currentColor1()[1]"
+      [blue]="currentColor1()[2]"
+      (save)="updateColor(1, $event)"></hallpass-color-maker>
+    <hallpass-color-maker 
+      [red]="currentColor2()[0]" 
+      [green]="currentColor2()[1]"
+      [blue]="currentColor2()[2]"
+      (save)="updateColor(2, $event)"></hallpass-color-maker>
   </div>
-  <h2 class="text-3xl text-purple-800">Select a Color</h2>
-  <hallpass-color-selector (colorSelected)="updateColor(2, $event?.rgb)"></hallpass-color-selector>
 </div>
 <hallpass-distance-formula-selector [show]="showDistanceFormulaSelector()" 
   (formulaSelected)="selectDistanceFormula($event)"

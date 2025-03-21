@@ -5,7 +5,7 @@ import { manhattan } from './manhattan.fn';
 import { DistanceFormula } from '../../types/distance-formula.type';
 import { DistanceFunction } from '../../types/distance-function.type';
 
-export const distanceFormula: Record<DistanceFormula, DistanceFunction> = {
+export const distanceFunction: Record<DistanceFormula, DistanceFunction> = {
     euclidean,
     manhattan,
     cosine,

@@ -1,0 +1,75 @@
+<div class="max-w-3xl mx-auto">
+  <h1 class="flex justify-center items-center gap-2">
+    Complementary Colors
+  </h1>
+  <div class="my-8 mx-auto max-w-lg text-justify bg-slate-50 text-slate-800 p-2 border-2 border-slate-200 rounded-md shadow-md">
+    <p class="mb-2">
+      Use the color picker to select an rgb color and click [save] to lock in the color.  
+      A list of complementary colors will be shown below.
+    </p>  
+  </div>
+
+  <div class="flex flex-col justify-center gap-2">
+    <div class="flex justify-center items-center gap-4">
+      <div class="w-8 h-8 rounded-lg" [style.background-color]="rgb1()"></div>
+      <span class="font-bold font-amber-800">Color #1</span>
+      <span class="font-mono">{{color1()}}</span>
+      <span class="font-mono">{{hex1()}}</span>
+    </div>
+  </div>
+  <div class="my-8 flex flex-col gap-1">
+    <hallpass-color-maker 
+      [red]="currentColor1()[0]" 
+      [green]="currentColor1()[1]"
+      [blue]="currentColor1()[2]"
+      (save)="updateColor($event)"></hallpass-color-maker>
+  </div>
+  @if (hsl()) {
+    <h3 class="flex items-center gap-4 text-slate-600">
+      <span class="font-bold">As HSL</span>
+      <code>hsl({{hsl()![0]}}&deg;,{{hsl()![1] * 100}}%,{{hsl()![2] * 100}}%)</code>
+      <span class="font-light">back to</span>
+      <code>rgb({{colorFromHsl()![0]}},{{colorFromHsl()![1]}},{{colorFromHsl()![2]}})</code>
+    </h3>
+    <div class="flex gap-4">
+      <div class="p-2 rounded-lg border-2 border-slate-200 shrink-0">
+        <hallpass-color-box-hsl 
+          [hue]="hsl()![0]"
+          [saturation]="hsl()![1]"
+          [luminance]="hsl()![2]"></hallpass-color-box-hsl>
+      </div>
+      <div class="p-2 rounded-lg border-2 border-slate-200 shrink-0">
+        <hallpass-color-box 
+          [red]="colorFromHsl()![0]"
+          [green]="colorFromHsl()![1]"
+          [blue]="colorFromHsl()![2]"></hallpass-color-box>
+      </div>
+    </div>
+  }
+  @if (complements()) {
+    <h3 class="font-bold text-slate-600">Complements</h3>
+    <div class="flex flex-wrap gap-4">
+      @for (item of complements(); track $index) {
+        @if (item) {
+          <div class="p-2 rounded-lg border-2 border-slate-200 shrink-0">
+            <div class="">
+              <a href="">
+                {{item.formula.replace("complementary-","")}}
+              </a>
+            </div>
+            <hallpass-color-box-complement 
+              [bgColor]="item.color"
+              [baseColor]="color1()"
+            ></hallpass-color-box-complement>
+            <div class="text-sm font-mono">
+              <div>rgb({{item.color[0]}},{{item.color[1]}},{{item.color[2]}})</div>  
+              <div>{{item.hex}}</div>  
+              <div>hsl({{item.hsl[0]}}&deg;,{{item.hsl[1] * 100}}%,{{item.hsl[2] * 100}}%)</div>  
+              <div title="contrast ratio"><span class="text-xs">contrast:</span> {{item.contrast.toFixed(2)}}:1</div>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>
