@@ -17,4 +17,8 @@ export const routes: Routes = [
     loadComponent: () => import('./views/complementary-colors/complementary-colors-view.component')
       .then(m => m.ComplementaryColorsViewComponent) 
   }, 
+  { path: 'color-wheel', 
+    loadComponent: () => import('./views/color-wheel/color-wheel-view.component')
+      .then(m => m.ColorWheelViewComponent) 
+  }, 
 ];
