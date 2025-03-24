@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { cartesianToPolar } from '../../../lib/transformations/cartesian-to-polar.fn';
 import { radianToDegree } from '../../../lib/transformations/radian-to-degree.fn';
 import { hsvToRgb } from '../../../lib/transformations/hsv-to-rgb.fn';
+import { RybVennComponent } from '../../components/color-theory/ryb-venn.component';
+import { RybMixerComponent } from '../../components/color-theory/ryb-mixer/ryb-mixer.component';
 
 @Component({
   selector: 'hallpass-color-wheel-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, 
+    RybVennComponent, RybMixerComponent
+  ],
   templateUrl: './color-wheel-view.component.html',
   styles: ':host { display: block; }'
 })
@@ -17,14 +21,29 @@ export class ColorWheelViewComponent implements AfterViewInit {
   @ViewChild('colorCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D | null = null;
 
+  @ViewChild('colorCircle', { static: false }) circleRef!: ElementRef<HTMLDivElement>;
+  
   
   ngAfterViewInit(): void {
     this.ctx = this.canvasRef.nativeElement.getContext('2d') as CanvasRenderingContext2D;
-    this.drawCircle();
+    this.drawCanvasCircle();
+
+    this.drawHtmlCircle();
+  }
+
+  drawHtmlCircle() {
+    if (!this.circleRef.nativeElement) {
+      return;
+    }
+    const div = this.circleRef.nativeElement;
+    div.style.width = `${this.radius * 2}px`;
+    div.style.height = `${this.radius * 2}px`;
+    const slices = Array.from(div.querySelectorAll('.slice'));
+    console.log({slices});
   }
 
   // - ref: https://medium.com/@bantic/hand-coding-a-color-wheel-with-canvas-78256c9d7d43
-  drawCircle() {
+  drawCanvasCircle() {
     if (!this.ctx) {
       return;
     }
@@ -63,6 +82,5 @@ export class ColorWheelViewComponent implements AfterViewInit {
     }
 
     this.ctx.putImageData(image, 0, 0);
-    console.log('drawCircle', image, data);
   }
 }

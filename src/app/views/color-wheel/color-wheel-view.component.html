@@ -9,7 +9,37 @@
   </div>
 
   <div class="my-8 flex flex-col items-center justify-center">
+    <hallpass-ryb-mixer />
+  </div>
+
+  <div class="my-8 flex flex-col items-center justify-center">
+    <hallpass-ryb-venn />
+  </div>
+
+  <div class="my-8 flex flex-col items-center justify-center">
+    <div #colorCircle id="colorCircle" class="rounded-full bg-red-400">
+      <div class="inner">
+        <div class="slice primary yellow" data-color=""></div>
+        <div class="slice tertiary amber" data-color=""></div>
+        <div class="slice secondary orange" data-color=""></div>
+        <div class="slice tertiary vermillion" data-color=""></div>
+        <div class="slice primary red" data-color=""></div>
+        <div class="slice tertiary magenta" data-color=""></div>
+        <div class="slice secondary purple" data-color=""></div>
+        <div class="slice tertiary violet" data-color=""></div>
+        <div class="slice primary blue" data-color=""></div>
+        <div class="slice tertiary teal" data-color=""></div>
+        <div class="slice secondary green" data-color=""></div>
+        <div class="slice tertiary chartreuse" data-color=""></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="my-8 flex flex-col items-center justify-center">
     <canvas #colorCanvas id="colorCanvas" [width]="radius*2" [height]="radius*2"></canvas>
   </div>
+
+
 
 </div>
